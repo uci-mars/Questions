@@ -2,15 +2,18 @@ package com.mmm.questions;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Toolbar;
 
 
-//to create your account and add to firebase's authentication
-public class CreateAccountActivity extends AppCompatActivity {
+public class PostActivity extends AppCompatActivity {
+
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setTitle("Create Account");
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_account);
+        setContentView(R.layout.activity_post);
+
+        setTitle("UpdatePost");
     }
 }
