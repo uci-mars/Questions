@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "374002593000-chh46o0e1pmgirkplg9c56frvrl0losb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mmm.questions",
+            "certificate_hash": "84b876b708b0c1d609087b6a6e30c2c8b754f383"
+          }
+        },
+        {
           "client_id": "374002593000-nov4fskm82t53n62a9ggedgr6jsf7fei.apps.googleusercontent.com",
           "client_type": 3
         }

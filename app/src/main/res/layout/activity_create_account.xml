@@ -4,6 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CreateAccountActivity">
+    tools:context=".CreateAccountActivity"
+    tools:layout_editor_absoluteY="81dp">
 
+    <Button
+        android:id="@+id/createButton"
+        android:layout_width="298dp"
+        android:layout_height="58dp"
+        android:text="Create Account"
+        tools:layout_editor_absoluteX="43dp"
+        tools:layout_editor_absoluteY="330dp" />
+
+    <EditText
+        android:id="@+id/emailText"
+        android:layout_width="290dp"
+        android:layout_height="46dp"
+        android:contentDescription="email"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        tools:layout_editor_absoluteX="43dp"
+        tools:layout_editor_absoluteY="143dp" />
 </android.support.constraint.ConstraintLayout>
