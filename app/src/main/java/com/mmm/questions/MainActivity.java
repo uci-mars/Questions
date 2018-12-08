@@ -23,4 +23,6 @@ public class MainActivity extends AppCompatActivity {
         FirebaseUser currentUser = mAuth.getCurrentUser();
         updateUI(currentUser);
     }
+
+    // uwu im just testing to see if i  still know how to git
 }
