@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeAcitivity">
+    tools:context=".HomeAcitivity"
+    tools:layout_editor_absoluteY="81dp">
 
     <Button
         android:id="@+id/createAccountButton"
@@ -23,10 +24,9 @@
         android:id="@+id/logInButton"
         android:layout_width="216dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="204dp"
+        android:layout_marginTop="60dp"
         android:onClick="goto_SignIn"
         android:text="Log In"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/createAccountButton" />
