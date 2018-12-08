@@ -17,10 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".CreateAccountActivity" />
-        <activity
-            android:name=".SignInActivity"
-            android:label="@string/title_activity_sign_in"
-            android:theme="@style/AppTheme"></activity>
+        <activity android:name=".SignInActivity" />
+        <activity android:name=".HomeAcitivity"></activity>
     </application>
 
 </manifest>
