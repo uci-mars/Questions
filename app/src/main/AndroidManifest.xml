@@ -16,8 +16,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".CreateAccountActivity"></activity>
+        <activity android:name=".CreateAccountActivity" />
+        <activity
+            android:name=".SignInActivity"
+            android:label="Update Post"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".PostActivity"></activity>
     </application>
 
 </manifest>
