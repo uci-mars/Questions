@@ -49,6 +49,36 @@ public class SearchActivity extends AppCompatActivity {
 
     private ArrayList<Post> postList;
     private ArrayList<Post> searchResults;
+    //private PostAdapter listAdapter;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_search);
+        setTitle("Search");
+
+        database = FirebaseDatabase.getInstance();
+        myRef = database.getReference("Posts");
+
+        searchButton = (Button)findViewById(R.id.searchButton);
+        searchText = (EditText)findViewById(R.id.searchText);
+
+        childEventListener = new ChildEventListener(){
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                contactList.add(dataSnapshot.getValue(Post.class));
+            }
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {}
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
+            @Override
+            public void onCancelled(DatabaseError databaseError) {}};
+
+
+    }
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
