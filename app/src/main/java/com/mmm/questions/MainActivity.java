@@ -176,8 +176,8 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show();
                 break;
 
-            case R.id.nav_settings:
-                Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
+            case R.id.nav_search:
+                startActivity(new Intent(this, com.mmm.questions.SearchActivity.class));
                 break;
 
             case R.id.nav_logout:
