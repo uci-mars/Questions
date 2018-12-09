@@ -67,13 +67,16 @@ public class PostActivity extends AppCompatActivity {
 
     public void StoreQuestionToFirebaseStorage(String post){
         Calendar calFordDate = Calendar.getInstance();
-        SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm");
-        String saveCurrentTime = currentTime.format(calFordDate.getTime());
+        SimpleDateFormat currentDate = new SimpleDateFormat("MM/DD/YYYY");
+        String saveCurrentDate = currentDate.format(calFordDate.getTime());
 
-        //need a getUser function somehow to know which user made the post????
+        Calendar calFordTime = Calendar.getInstance();
+        SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm");
+        String saveCurrentTime = currentTime.format(calFordTime.getTime());
+
 
         String user_id = userAuthentication.getCurrentUser().getUid();
-        Post newPost = new Post(user_id, saveCurrentTime, post);
+        Post newPost = new Post(user_id, saveCurrentTime, saveCurrentDate, post);
         postReference.child(postReference.push().getKey()).setValue(newPost);
         Toast.makeText(this, newPost.getUser() + " successfully added a post!", Toast.LENGTH_LONG).show();
     }
