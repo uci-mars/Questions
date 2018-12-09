@@ -17,7 +17,9 @@ import android.view.View;
 import android.widget.Toast;
 import android.support.v7.widget.Toolbar;
 
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -56,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         questionsList.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setReverseLayout(true);
-        linearLayoutManager.setStacckFromEnd(true);
+        linearLayoutManager.setStackFromEnd(true);
         questionsList.setLayoutManager(linearLayoutManager);
 
 
@@ -81,8 +83,19 @@ public class MainActivity extends AppCompatActivity {
 
     private void DisplayAllUsersPosts()
     {
+        FirebaseRecyclerOptions<Post> options =
+                new FirebaseRecyclerOptions.Builder<Post>().setQuery(query, Post.class).build();
+        FirebaseRecyclerAdapter<Post, PostsViewHolder> firebaseRecyclerAdapter =
+                new FirebaseRecyclerAdapter<Post, PostsViewHolder>(
+                        options
+                ){
+
+                };
 
     }
+
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
