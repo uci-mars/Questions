@@ -12,7 +12,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="0dp"
-        android:src="@drawable/petr"></de.hdodenhof.circleimageview.CircleImageView>
+        android:src="@drawable/small_petr"></de.hdodenhof.circleimageview.CircleImageView>
 
     <TextView
         android:id="@+id/profile_name"

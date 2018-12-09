@@ -11,7 +11,8 @@
         android:layout_marginBottom="4dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="10dp"
+        android:padding="8dp">
         
         <LinearLayout
             android:layout_width="match_parent"
@@ -24,7 +25,7 @@
                 android:id="@+id/post_profile_picture"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:src="@drawable/petr"
+                android:src="@drawable/small_petr"
                 android:scaleType="centerCrop"
                 android:layout_marginLeft="4dp"/>
             
@@ -91,12 +92,12 @@
             android:id="@+id/question"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Description...."
             android:layout_marginLeft="3dp"
             android:layout_marginRight="3dp"
             android:padding="3dp"
-            android:textSize="14sp"
-            android:textColor="@android:color/black"/>
+            android:text="Description...."
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
     </LinearLayout>
     
 </android.support.constraint.ConstraintLayout>

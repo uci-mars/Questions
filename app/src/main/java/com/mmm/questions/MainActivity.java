@@ -12,11 +12,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.support.v7.widget.Toolbar;
@@ -27,6 +29,9 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,19 +41,25 @@ public class MainActivity extends AppCompatActivity {
     private ActionBarDrawerToggle actionBarDrawerToggle;
     private Toolbar mToolbar;
     private DatabaseReference PostRef;
-    private Button askButton;
+    //private Button askButton;
     //for ser info
     private FirebaseAuth mAuth;
+
+    private Button updatePostButton;
+    private EditText postText;
+    private String post;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        postText = (EditText) findViewById(R.id.question_text);
+
         PostRef = FirebaseDatabase.getInstance().getReference().child("Posts");
         mAuth = FirebaseAuth.getInstance();
 
-        askButton = (Button) findViewById(R.id.ask_button);
+        updatePostButton = (Button) findViewById(R.id.raisehand_button);
 
         mToolbar = (Toolbar) findViewById(R.id.main_page_toolbar);
         setSupportActionBar(mToolbar);
@@ -74,14 +85,6 @@ public class MainActivity extends AppCompatActivity {
         View navView = navigationView.inflateHeaderView(R.layout.navigation_header);
 
 
-    
-        askButton.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                Intent intent = new Intent(v.getContext(), PostActivity.class);
-                startActivity(intent);
-            }
-        });
-
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -89,6 +92,13 @@ public class MainActivity extends AppCompatActivity {
                 UserMenuSelector(item);
                 return false;
 
+            }
+        });
+
+        updatePostButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ValidatePostInfo();
             }
         });
 
@@ -173,6 +183,34 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
         mAuth.signOut();
         startActivity(new Intent(this, com.mmm.questions.SignInActivity.class));
+    }
+
+    public void ValidatePostInfo(){
+        post = postText.getText().toString();
+        if(TextUtils.isEmpty(post)){
+            Toast.makeText(this, "Please input a question here...", Toast.LENGTH_SHORT).show();
+        }
+
+        else{
+            StoreQuestionToFirebaseStorage(post);
+        }
+
+    }
+
+    public void StoreQuestionToFirebaseStorage(String post){
+        Calendar calFordDate = Calendar.getInstance();
+        SimpleDateFormat currentDate = new SimpleDateFormat("dd-MMMM-yyyy");
+        String saveCurrentDate = currentDate.format(calFordDate.getTime());
+
+        Calendar calFordTime = Calendar.getInstance();
+        SimpleDateFormat currentTime = new SimpleDateFormat("hh:mm a");
+        String saveCurrentTime = currentTime.format(calFordTime.getTime());
+
+
+        String user_id = mAuth.getCurrentUser().getDisplayName();
+        Post newPost = new Post(user_id, saveCurrentTime, saveCurrentDate, post);
+        PostRef.child(PostRef.push().getKey()).setValue(newPost);
+        Toast.makeText(this, newPost.getUser() + " successfully added a post!", Toast.LENGTH_LONG).show();
     }
 
 

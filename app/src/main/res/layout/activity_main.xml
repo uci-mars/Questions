@@ -17,42 +17,57 @@
 
         </include>
 
+        <FrameLayout
+            android:id="@+id/main_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/main_page_toolbar"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="2dp">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/questions_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </android.support.v7.widget.RecyclerView>
+        </FrameLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="55dp"
+            android:layout_height="140dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentBottom="true"
+            android:layout_marginStart="0dp"
+            android:background="#FFFFFF"
             android:orientation="vertical">
 
+            <EditText
+                android:id="@+id/question_text"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:ems="10"
+                android:hint="Write your question here..."
+                android:inputType="textMultiLine"
+                android:singleLine="false"
+                android:textAlignment="center"
+                android:textColorLink="@color/colorPrimary" />
+
             <Button
-                android:id="@+id/ask_button"
+                android:id="@+id/raisehand_button"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="40dp"
                 android:layout_margin="4dp"
                 android:background="@drawable/ask_button"
                 android:text="Raise Hand"
                 android:textAllCaps="true"
                 android:textColor="#FFFFFF"
                 android:textSize="15sp" />
+
         </LinearLayout>
 
-        <FrameLayout
-            android:id="@+id/main_container"
-            android:layout_width="match_parent"
-            android:layout_height="459dp"
-            android:layout_alignTop="@+id/main_page_toolbar"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="55dp">
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/questions_list"
-                android:layout_width="match_parent"
-                android:layout_height="637dp">
-
-            </android.support.v7.widget.RecyclerView>
-        </FrameLayout>
     </RelativeLayout>
 
     <android.support.design.widget.NavigationView
