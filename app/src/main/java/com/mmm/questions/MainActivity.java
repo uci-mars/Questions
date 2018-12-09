@@ -2,6 +2,7 @@ package com.mmm.questions;
 
 // The "wall"
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.DrawerLayout;
 
@@ -15,6 +16,8 @@ import android.view.View;
 import android.widget.Toast;
 import android.support.v7.widget.Toolbar;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,11 +27,16 @@ public class MainActivity extends AppCompatActivity {
     private ActionBarDrawerToggle actionBarDrawerToggle;
     private Toolbar mToolbar;
 
+    //for ser info
+    private FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setTitle("Home");
+
+        mAuth = FirebaseAuth.getInstance();
 
         mToolbar = (Toolbar) findViewById(R.id.main_page_toolbar);
         setSupportActionBar(mToolbar);
@@ -80,7 +88,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.nav_logout:
-                Toast.makeText(this, "Logout", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "Logout", Toast.LENGTH_SHORT).show();
+                mAuth.signOut();
+                startActivity(new Intent(this, com.mmm.questions.HomeAcitivity.class));
                 break;
         }
     }

@@ -95,12 +95,7 @@ public class CreateAccountActivity extends AppCompatActivity {
 
                         Intent intent = new Intent(CreateAccountActivity.this,MainActivity.class);
                         startActivity(intent);
-
-                        userEmail.setText("");
-                        userName.setText("");
-                        userPass.setText("");
-                        userConfirmPass.setText("");
-
+                        
                     }else{
                         String m = task.getException().getMessage();
                         Toast.makeText(CreateAccountActivity.this, "Error: " + m, Toast.LENGTH_SHORT).show();
