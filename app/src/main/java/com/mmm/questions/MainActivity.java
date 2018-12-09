@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         questionsList.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setReverseLayout(true);
-        linearLayoutManager.setStacckFromEnd(true);
+        linearLayoutManager.setStackFromEnd(true);
         questionsList.setLayoutManager(linearLayoutManager);
 
 
