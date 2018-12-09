@@ -40,6 +40,8 @@ public class PostActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 ValidatePostInfo();
+                Intent intent = new Intent(view.getContext(), MainActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -76,7 +78,8 @@ public class PostActivity extends AppCompatActivity {
 
 
         String user_id = userAuthentication.getCurrentUser().getDisplayName();
-        Post newPost = new Post(user_id, saveCurrentTime, saveCurrentDate, post);
+        String Uid = userAuthentication.getCurrentUser().getUid();
+        Post newPost = new Post(user_id, Uid, saveCurrentTime, saveCurrentDate, post);
         postReference.child(postReference.push().getKey()).setValue(newPost);
         Toast.makeText(this, newPost.getUser() + " successfully added a post!", Toast.LENGTH_LONG).show();
     }

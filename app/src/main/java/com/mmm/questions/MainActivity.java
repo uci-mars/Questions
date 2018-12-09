@@ -117,12 +117,14 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseRecyclerAdapter<Post, PostViewHolder> adapter =
                 new FirebaseRecyclerAdapter<Post, PostViewHolder>(options) {
+                    private int position;
                     @Override
                     protected void onBindViewHolder(@NonNull PostViewHolder holder, int position, @NonNull Post model) {
                         holder.userName.setText(model.userID);
                         holder.questionPost.setText(model.getContent());
                         holder.dateStamp.setText(model.getCurrentDate() + " @ ");
                         holder.timeStamp.setText(model.getCurrentTime());
+                        this.position = position;
                     }
 
                     @NonNull
@@ -130,6 +132,14 @@ public class MainActivity extends AppCompatActivity {
                     public PostViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.questions_layout, parent, false);
                         PostViewHolder viewHolder = new PostViewHolder(view);
+                        final String PostKey = getRef(position).getKey();
+                        viewHolder.getView().setOnClickListener(new View.OnClickListener(){
+                            public void onClick(View v){
+                                Intent clickPostIntent = new Intent(v.getContext(), ClickPostActivity.class);
+                                clickPostIntent.putExtra("Post Key", PostKey);
+                                startActivity(clickPostIntent);
+                            }
+                        });
                         return viewHolder;
                     }
                 };
@@ -148,6 +158,10 @@ public class MainActivity extends AppCompatActivity {
             questionPost = itemView.findViewById(R.id.question);
             dateStamp = itemView.findViewById(R.id.date);
             timeStamp = itemView.findViewById(R.id.time);
+        }
+
+        public View getView(){
+            return itemView;
         }
     }
 
