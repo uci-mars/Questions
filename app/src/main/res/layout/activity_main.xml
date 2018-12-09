@@ -27,15 +27,14 @@
             <Button
                 android:id="@+id/ask_button"
                 style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_margin="4dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_margin="4dp"
                 android:background="@drawable/ask_button"
-                android:onClick="onClick"
                 android:text="Raise Hand"
                 android:textAllCaps="true"
                 android:textColor="#FFFFFF"
-                android:textSize="15sp"/>
+                android:textSize="15sp" />
         </LinearLayout>
 
         <FrameLayout
