@@ -11,13 +11,24 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <include
+            android:id="@+id/main_page_toolbar"
+            layout="@layout/app_bar_layout">
+
+        </include>
+
         <FrameLayout
             android:id="@+id/main_container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="512dp"
+            android:layout_alignTop="@+id/main_page_toolbar"
             android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true">
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="55dp">
 
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="637dp" />
         </FrameLayout>
     </RelativeLayout>
 
