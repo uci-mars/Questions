@@ -11,22 +11,20 @@
         android:theme="@style/AppTheme">
 
         // "Main" Activity
-        <activity android:name=".MainActivity">
+        <activity android:name=".SignInActivity"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+
         </activity>
 
 
         <activity android:name=".CreateAccountActivity" />
 
-        <activity
-            android:name=".SignInActivity"
-            android:label="Sign in"
-            android:theme="@style/AppTheme" />
-
-        <activity android:name=".HomeAcitivity"></activity>
+        <activity android:name=".MainActivity"></activity>
 
 
         <activity

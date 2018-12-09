@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -30,6 +31,8 @@ public class SignInActivity extends AppCompatActivity {
         setTitle("Sign In");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
+
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
         myAuth = FirebaseAuth.getInstance();
 
