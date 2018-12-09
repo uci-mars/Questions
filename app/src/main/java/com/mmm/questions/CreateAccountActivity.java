@@ -95,7 +95,8 @@ public class CreateAccountActivity extends AppCompatActivity {
                         userPass.setText("");
                         userConfirmPass.setText("");
 
-                        sendUserToMain();
+                        Intent intent = new Intent(CreateAccountActivity.this,MainActivity.class);
+                        startActivity(intent);
                     }else{
                         String m = task.getException().getMessage();
                         Toast.makeText(CreateAccountActivity.this, "Error: " + m, Toast.LENGTH_SHORT).show();
@@ -105,8 +106,4 @@ public class CreateAccountActivity extends AppCompatActivity {
         }
     }
 
-    private void sendUserToMain() {
-        Intent intent = new Intent(this,com.mmm.questions.MainActivity.class);
-        startActivity(intent);
-    }
 }
