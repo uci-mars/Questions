@@ -84,6 +84,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                 //eventlisten
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
+                    Toast.makeText(CreateAccountActivity.this, "Creating..please wait", Toast.LENGTH_SHORT).show();
                     if(task.isSuccessful()){
 
                         Toast.makeText(CreateAccountActivity.this, "Account created!", Toast.LENGTH_SHORT).show();
@@ -95,7 +96,7 @@ public class CreateAccountActivity extends AppCompatActivity {
 
                         Intent intent = new Intent(CreateAccountActivity.this,MainActivity.class);
                         startActivity(intent);
-                        
+
                     }else{
                         String m = task.getException().getMessage();
                         Toast.makeText(CreateAccountActivity.this, "Error: " + m, Toast.LENGTH_SHORT).show();

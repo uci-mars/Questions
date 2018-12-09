@@ -1,5 +1,6 @@
 package com.mmm.questions;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
@@ -42,6 +43,13 @@ public class PostActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    protected void OnDestroy()
+    {
+        super.onDestroy();
+        userAuthentication.signOut();
+        startActivity(new Intent(this, com.mmm.questions.HomeAcitivity.class));
     }
 
     public void ValidatePostInfo(){
