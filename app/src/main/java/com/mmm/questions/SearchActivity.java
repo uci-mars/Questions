@@ -9,6 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Button;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
@@ -29,8 +32,8 @@ public class SearchActivity extends AppCompatActivity {
     private FirebaseDatabase database;
     private DatabaseReference myRef;
 
-    private ChildEventListener childEventListener;
-    private ArrayList<Post> contactList;
+    ;
+    private ArrayList<Post> postList;
     private ArrayList<Post> searchResults;
     //private PostAdapter listAdapter;
     @Override
@@ -62,6 +65,8 @@ public class SearchActivity extends AppCompatActivity {
 
     }
 
+
+    
 
     protected void OnDestroy()
     {
