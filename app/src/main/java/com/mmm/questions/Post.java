@@ -1,7 +1,9 @@
 package com.mmm.questions;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class Post {
-    private String userID;
+    public String userID;
     private String currentTime;
     private String currentDate;
     private String content;
@@ -19,6 +21,8 @@ public class Post {
         this.currentDate = currentDate;
         this.content = content;
     }
+
+
 
     public String getUser(){
         return userID;

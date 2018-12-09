@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView questionsList;
     private ActionBarDrawerToggle actionBarDrawerToggle;
     private Toolbar mToolbar;
-    private DatabaseReference UsersRef;
+    private DatabaseReference PostRef;
     private Button askButton;
     //for ser info
     private FirebaseAuth mAuth;
@@ -44,9 +44,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setTitle("Home");
 
-        UsersRef = FirebaseDatabase.getInstance().getReference().child("Posts");
+        PostRef = FirebaseDatabase.getInstance().getReference().child("Posts");
         mAuth = FirebaseAuth.getInstance();
 
         askButton = (Button) findViewById(R.id.ask_button);
@@ -93,8 +92,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //DisplayAllUsersPosts();
-
 
     }
 
@@ -105,16 +102,16 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseRecyclerOptions<Post> options =
                 new FirebaseRecyclerOptions.Builder<Post>()
-                .setQuery(UsersRef, Post.class)
+                .setQuery(PostRef, Post.class)
                 .build();
 
         FirebaseRecyclerAdapter<Post, PostViewHolder> adapter =
                 new FirebaseRecyclerAdapter<Post, PostViewHolder>(options) {
                     @Override
                     protected void onBindViewHolder(@NonNull PostViewHolder holder, int position, @NonNull Post model) {
-                        holder.userName.setText(model.getUser());
+                        holder.userName.setText(model.userID);
                         holder.questionPost.setText(model.getContent());
-                        holder.dateStamp.setText(model.getCurrentDate());
+                        holder.dateStamp.setText(model.getCurrentDate() + " @ ");
                         holder.timeStamp.setText(model.getCurrentTime());
                     }
 
@@ -143,22 +140,6 @@ public class MainActivity extends AppCompatActivity {
             timeStamp = itemView.findViewById(R.id.time);
         }
     }
-
-    private void DisplayAllUsersPosts()
-    {
-//        FirebaseRecyclerOptions<Post> options =
-//                new FirebaseRecyclerOptions.Builder<Post>().setQuery(query, Post.class).build();
-//        FirebaseRecyclerAdapter<Post, PostsViewHolder> firebaseRecyclerAdapter =
-//                new FirebaseRecyclerAdapter<Post, PostsViewHolder>(
-//                        options
-//                ){
-//
-//                };
-
-    }
-
-
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

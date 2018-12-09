@@ -71,7 +71,7 @@ public class PostActivity extends AppCompatActivity {
         String saveCurrentDate = currentDate.format(calFordDate.getTime());
 
         Calendar calFordTime = Calendar.getInstance();
-        SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm");
+        SimpleDateFormat currentTime = new SimpleDateFormat("hh:mm a");
         String saveCurrentTime = currentTime.format(calFordTime.getTime());
 
 
