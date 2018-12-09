@@ -25,10 +25,10 @@
         tools:layout_editor_absoluteX="267dp"
         tools:layout_editor_absoluteY="25dp" />
 
-    <ListView
-        android:id="@+id/listViewResults"
+    <android.support.v7.widget.RecyclerView
         android:layout_width="368dp"
         android:layout_height="466dp"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="93dp" />
+
 </android.support.constraint.ConstraintLayout>
