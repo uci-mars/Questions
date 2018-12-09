@@ -89,7 +89,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                         Toast.makeText(CreateAccountActivity.this, "Account created!", Toast.LENGTH_SHORT).show();
 
                         User u = new User(name,email,pass1);
-                        //databaseReference.child(databaseReference.push().getKey()).setValue(u);
+                        databaseReference.child(databaseReference.push().getKey()).setValue(u);
 
 
 
