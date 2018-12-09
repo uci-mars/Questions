@@ -133,6 +133,7 @@ public class MainActivity extends AppCompatActivity {
                         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.questions_layout, parent, false);
                         PostViewHolder viewHolder = new PostViewHolder(view);
                         final String PostKey = getRef(position).getKey();
+
                         viewHolder.getView().setOnClickListener(new View.OnClickListener(){
                             public void onClick(View v){
                                 Intent clickPostIntent = new Intent(v.getContext(), ClickPostActivity.class);
@@ -153,6 +154,7 @@ public class MainActivity extends AppCompatActivity {
         TextView userName, questionPost, dateStamp, timeStamp;
         public PostViewHolder(@NonNull View itemView){
             super(itemView);
+
 
             userName = itemView.findViewById(R.id.post_username);
             questionPost = itemView.findViewById(R.id.question);
@@ -222,7 +224,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         String user_id = mAuth.getCurrentUser().getDisplayName();
-        Post newPost = new Post(user_id, saveCurrentTime, saveCurrentDate, post);
+        Post newPost = new Post(user_id, mAuth.getCurrentUser().getUid(), saveCurrentTime, saveCurrentDate, post);
         PostRef.child(PostRef.push().getKey()).setValue(newPost);
         Toast.makeText(this, newPost.getUser() + " successfully added a post!", Toast.LENGTH_LONG).show();
     }
