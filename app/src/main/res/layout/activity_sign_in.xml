@@ -50,4 +50,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailText" />
+
+    <TextView
+        android:id="@+id/needNewAccount"
+        android:layout_width="292dp"
+        android:layout_height="44dp"
+        android:text="Need New Account?"
+        android:textAlignment="center"
+        android:textColor="?attr/colorPrimary"
+        android:textSize="24sp"
+        android:typeface="normal"
+        tools:layout_editor_absoluteX="46dp"
+        tools:layout_editor_absoluteY="415dp" />
 </android.support.constraint.ConstraintLayout>
