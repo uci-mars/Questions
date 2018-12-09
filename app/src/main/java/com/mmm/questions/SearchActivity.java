@@ -35,9 +35,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 
 public class SearchActivity extends AppCompatActivity {
-
-
-
     private EditText searchText;
     private Button searchButton;
 
@@ -49,46 +46,20 @@ public class SearchActivity extends AppCompatActivity {
 
     private ArrayList<Post> postList;
     private ArrayList<Post> searchResults;
-    //private PostAdapter listAdapter;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
         setTitle("Search");
 
-        database = FirebaseDatabase.getInstance();
-        myRef = database.getReference("Posts");
 
-        searchButton = (Button)findViewById(R.id.searchButton);
-        searchText = (EditText)findViewById(R.id.searchText);
-
-        childEventListener = new ChildEventListener(){
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                contactList.add(dataSnapshot.getValue(Post.class));
-            }
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {}
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
-            @Override
-            public void onCancelled(DatabaseError databaseError) {}};
-
-
-    }
-
-
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search);
-        setTitle("Search");
-
-        searchText = (EditText)findViewById(R.id.searchText);
         searchButton = (Button) findViewById(R.id.searchButton);
+        searchText = (EditText) findViewById(R.id.searchText);
 
         UsersRef = FirebaseDatabase.getInstance().getReference().child("Post");
+        database = FirebaseDatabase.getInstance();
         mAuth = FirebaseAuth.getInstance();
 
         questionsList = (RecyclerView) findViewById(R.id.questions_list);
@@ -100,8 +71,8 @@ public class SearchActivity extends AppCompatActivity {
 
     }
 
-    protected void onStart()
-    {
+
+    protected void onStart() {
         super.onStart();
 
         FirebaseRecyclerOptions<Post> options =
@@ -132,37 +103,26 @@ public class SearchActivity extends AppCompatActivity {
         adapter.startListening();
     }
 
-    public static class PostViewHolder extends RecyclerView.ViewHolder{
+public static class PostViewHolder extends RecyclerView.ViewHolder {
 
-        TextView userName, questionPost, dateStamp, timeStamp;
-        public PostViewHolder(@NonNull View itemView){
-            super(itemView);
+    TextView userName, questionPost, dateStamp, timeStamp;
 
-            userName = itemView.findViewById(R.id.post_username);
-            questionPost = itemView.findViewById(R.id.question);
-            dateStamp = itemView.findViewById(R.id.date);
-            timeStamp = itemView.findViewById(R.id.time);
-        }
+    public PostViewHolder(@NonNull View itemView) {
+        super(itemView);
+
+        userName = itemView.findViewById(R.id.post_username);
+        questionPost = itemView.findViewById(R.id.question);
+        dateStamp = itemView.findViewById(R.id.date);
+        timeStamp = itemView.findViewById(R.id.time);
     }
 
-    private void DisplayAllUsersPosts()
-    {
-//        FirebaseRecyclerOptions<Post> options =
-//                new FirebaseRecyclerOptions.Builder<Post>().setQuery(query, Post.class).build();
-//        FirebaseRecyclerAdapter<Post, PostsViewHolder> firebaseRecyclerAdapter =
-//                new FirebaseRecyclerAdapter<Post, PostsViewHolder>(
-//                        options
-//                ){
-//
-//                };
-
-    }
+}
 
 
-    protected void OnDestroy()
-    {
+    protected void OnDestroy() {
         super.onDestroy();
         mAuth.signOut();
         startActivity(new Intent(this, com.mmm.questions.HomeAcitivity.class));
     }
+
 }
