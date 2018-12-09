@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         setTitle("Home");
 
-        UsersRef = FirebaseDatabase.getInstance().getReference().child("Users");
+        UsersRef = FirebaseDatabase.getInstance().getReference().child("Posts");
         mAuth = FirebaseAuth.getInstance();
 
         askButton = (Button) findViewById(R.id.ask_button);

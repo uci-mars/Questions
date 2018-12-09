@@ -6,6 +6,13 @@ public class Post {
     private String currentDate;
     private String content;
 
+    public Post(){
+        this.userID = "";
+        this.currentTime = "";
+        this.currentDate = "";
+        this.content = "";
+    }
+
     public Post(String userID, String currentTime, String currentDate, String content){
         this.userID = userID;
         this.currentTime = currentTime;

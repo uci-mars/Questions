@@ -81,30 +81,31 @@ public class CreateAccountActivity extends AppCompatActivity {
 
             //if we pass all the fields: we push it to firebase
             myAuth.createUserWithEmailAndPassword(email,pass1).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                //eventlisten
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    Toast.makeText(CreateAccountActivity.this, "Creating..please wait", Toast.LENGTH_SHORT).show();
-                    if(task.isSuccessful()){
+                    //eventlisten
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        Toast.makeText(CreateAccountActivity.this, "Creating..please wait", Toast.LENGTH_SHORT).show();
+                        if(task.isSuccessful()){
 
-                        Toast.makeText(CreateAccountActivity.this, "Account created!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CreateAccountActivity.this, "Account created!", Toast.LENGTH_SHORT).show();
 
-                        User u = new User(name,email,pass1);
-                        databaseReference.child(databaseReference.push().getKey()).setValue(u);
+                            User u = new User(name,email,pass1);
+                            databaseReference.child(databaseReference.push().getKey()).setValue(u);
 
 
 
-                        Intent intent = new Intent(CreateAccountActivity.this,MainActivity.class);
-                        startActivity(intent);
+                            Intent intent = new Intent(CreateAccountActivity.this,MainActivity.class);
+                            startActivity(intent);
 
-                    }else{
-                        String m = task.getException().getMessage();
-                        Toast.makeText(CreateAccountActivity.this, "Error: " + m, Toast.LENGTH_SHORT).show();
+                        }else{
+                            String m = task.getException().getMessage();
+                            Toast.makeText(CreateAccountActivity.this, "Error: " + m, Toast.LENGTH_SHORT).show();
+                        }
                     }
-                }
-            });
+                });
+            }
         }
     }
 
 
-}
+
