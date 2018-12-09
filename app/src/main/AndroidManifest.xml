@@ -9,37 +9,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         // "Main" Activity
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
         <activity android:name=".CreateAccountActivity" />
-
         <activity
             android:name=".SignInActivity"
             android:label="Sign in"
             android:theme="@style/AppTheme" />
-
-        <activity android:name=".HomeAcitivity"></activity>
-
-
+        <activity android:name=".HomeAcitivity" />
         <activity
-            android:name = ".PostActivity"
-            android:exported = "true">
+            android:name=".PostActivity"
+            android:exported="true">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity android:name=".SearchActivity"></activity>
     </application>
-
-
-
 
 </manifest>
