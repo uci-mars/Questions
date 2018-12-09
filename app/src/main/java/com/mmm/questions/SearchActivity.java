@@ -32,7 +32,7 @@ public class SearchActivity extends AppCompatActivity {
     private ChildEventListener childEventListener;
     private ArrayList<Post> contactList;
     private ArrayList<Post> searchResults;
-    private PostAdapter listAdapter;
+    //private PostAdapter listAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
