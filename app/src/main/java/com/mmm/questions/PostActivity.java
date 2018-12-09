@@ -75,7 +75,7 @@ public class PostActivity extends AppCompatActivity {
         String saveCurrentTime = currentTime.format(calFordTime.getTime());
 
 
-        String user_id = userAuthentication.getCurrentUser().getProviderId();
+        String user_id = userAuthentication.getCurrentUser().getDisplayName();
         Post newPost = new Post(user_id, saveCurrentTime, saveCurrentDate, post);
         postReference.child(postReference.push().getKey()).setValue(newPost);
         Toast.makeText(this, newPost.getUser() + " successfully added a post!", Toast.LENGTH_LONG).show();
