@@ -183,11 +183,16 @@ public class MainActivity extends AppCompatActivity {
             case R.id.nav_logout:
                 //Toast.makeText(this, "Logout", Toast.LENGTH_SHORT).show();
                 mAuth.signOut();
-                startActivity(new Intent(this, com.mmm.questions.HomeAcitivity.class));
+                startActivity(new Intent(this, com.mmm.questions.SignInActivity.class));
                 break;
         }
     }
 
+    protected void OnDestroy() {
+        super.onDestroy();
+        mAuth.signOut();
+        startActivity(new Intent(this, com.mmm.questions.SignInActivity.class));
+    }
 
 
 

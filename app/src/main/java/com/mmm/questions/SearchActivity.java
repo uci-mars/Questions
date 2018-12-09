@@ -122,7 +122,7 @@ public static class PostViewHolder extends RecyclerView.ViewHolder {
     protected void OnDestroy() {
         super.onDestroy();
         mAuth.signOut();
-        startActivity(new Intent(this, com.mmm.questions.HomeAcitivity.class));
+        startActivity(new Intent(this, com.mmm.questions.SignInActivity.class));
     }
 
 }
