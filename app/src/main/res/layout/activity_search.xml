@@ -10,41 +10,41 @@
     <EditText
         android:id="@+id/searchText"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="52dp"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="17dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="21dp"
         android:ems="10"
         android:hint="Search"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/questions_list"
-        app:layout_constraintEnd_toStartOf="@+id/searchButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/searchButton" />
-
-    <Button
-        android:id="@+id/searchButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="23dp"
-        android:layout_marginEnd="29dp"
-        android:layout_marginBottom="20dp"
-        android:text="Search"
-        app:layout_constraintBottom_toTopOf="@+id/questions_list"
+        app:layout_constraintBottom_toTopOf="@+id/main_container"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/searchText"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/questions_list"
+    <FrameLayout
+        android:id="@+id/main_container"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchButton" />
+        app:layout_constraintTop_toBottomOf="@+id/searchText">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/questions_list"
+            android:layout_width="356dp"
+            android:layout_height="433dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/searchButton">
+
+        </android.support.v7.widget.RecyclerView>
+    </FrameLayout>
 
 </android.support.constraint.ConstraintLayout>

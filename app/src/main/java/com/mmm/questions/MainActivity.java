@@ -180,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId())
         {
             case R.id.nav_home:
-                Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, com.mmm.questions.MainActivity.class));
                 break;
 
             case R.id.nav_search:
