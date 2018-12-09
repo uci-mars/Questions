@@ -66,51 +66,51 @@ public class SearchActivity extends AppCompatActivity {
 
     }
 
-//    protected void onStart()
-//    {
-//        super.onStart();
-//
-//        FirebaseRecyclerOptions<Post> options =
-//                new FirebaseRecyclerOptions.Builder<Post>()
-//                        .setQuery(UsersRef, Post.class)
-//                        .build();
-//
-//        FirebaseRecyclerAdapter<Post, MainActivity.PostViewHolder> adapter =
-//                new FirebaseRecyclerAdapter<Post, MainActivity.PostViewHolder>(options) {
-//                    @Override
-//                    protected void onBindViewHolder(@NonNull MainActivity.PostViewHolder holder, int position, @NonNull Post model) {
-//                        holder.userName.setText(model.getUser());
-//                        holder.questionPost.setText(model.getContent());
-//                        holder.dateStamp.setText(model.getCurrentDate());
-//                        holder.timeStamp.setText(model.getCurrentTime());
-//                    }
-//
-//                    @NonNull
-//                    @Override
-//                    public MainActivity.PostViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-//                        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.questions_layout, parent, false);
-//                        MainActivity.PostViewHolder viewHolder = new MainActivity.PostViewHolder(view);
-//                        return viewHolder;
-//                    }
-//                };
-//        questionsList.setAdapter(adapter);
-//
-//        adapter.startListening();
-//    }
-//
-//    public static class PostViewHolder extends RecyclerView.ViewHolder{
-//
-//        TextView userName, questionPost, dateStamp, timeStamp;
-//        public PostViewHolder(@NonNull View itemView){
-//            super(itemView);
-//
-//            userName = itemView.findViewById(R.id.post_username);
-//            questionPost = itemView.findViewById(R.id.question);
-//            dateStamp = itemView.findViewById(R.id.date);
-//            timeStamp = itemView.findViewById(R.id.time);
-//        }
-//    }
-//
+    protected void onStart()
+    {
+        super.onStart();
+
+        FirebaseRecyclerOptions<Post> options =
+                new FirebaseRecyclerOptions.Builder<Post>()
+                        .setQuery(UsersRef, Post.class)
+                        .build();
+
+        FirebaseRecyclerAdapter<Post, MainActivity.PostViewHolder> adapter =
+                new FirebaseRecyclerAdapter<Post, MainActivity.PostViewHolder>(options) {
+                    @Override
+                    protected void onBindViewHolder(@NonNull MainActivity.PostViewHolder holder, int position, @NonNull Post model) {
+                        holder.userName.setText(model.getUser());
+                        holder.questionPost.setText(model.getContent());
+                        holder.dateStamp.setText(model.getCurrentDate());
+                        holder.timeStamp.setText(model.getCurrentTime());
+                    }
+
+                    @NonNull
+                    @Override
+                    public MainActivity.PostViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.questions_layout, parent, false);
+                        MainActivity.PostViewHolder viewHolder = new MainActivity.PostViewHolder(view);
+                        return viewHolder;
+                    }
+                };
+        questionsList.setAdapter(adapter);
+
+        adapter.startListening();
+    }
+
+    public static class PostViewHolder extends RecyclerView.ViewHolder{
+
+        TextView userName, questionPost, dateStamp, timeStamp;
+        public PostViewHolder(@NonNull View itemView){
+            super(itemView);
+
+            userName = itemView.findViewById(R.id.post_username);
+            questionPost = itemView.findViewById(R.id.question);
+            dateStamp = itemView.findViewById(R.id.date);
+            timeStamp = itemView.findViewById(R.id.time);
+        }
+    }
+
 
     protected void OnDestroy()
     {
