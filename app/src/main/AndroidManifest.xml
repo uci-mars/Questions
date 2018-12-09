@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
 
         // "Main" Activity
-        <activity android:name=".MainActivity">
+        <activity android:name=".HomeAcitivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -23,10 +23,23 @@
 
         <activity
             android:name=".SignInActivity"
-            android:label="Update Post"
+            android:label="Sign in"
             android:theme="@style/AppTheme" />
 
-        <activity android:name=".PostActivity"></activity>
+        <activity android:name=".MainActivity"></activity>
+
+
+        <activity
+            android:name = ".PostActivity"
+            android:exported = "true">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
     </application>
+
+
+
 
 </manifest>

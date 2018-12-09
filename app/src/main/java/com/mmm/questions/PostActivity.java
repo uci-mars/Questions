@@ -7,14 +7,22 @@ import android.widget.EditText;
 import android.view.View;
 import android.text.TextUtils;
 import android.widget.Toast;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class PostActivity extends AppCompatActivity {
 
     private Button updatePostButton;
     private EditText postText;
     private String post;
+    private DatabaseReference postReference;
+    private FirebaseAuth userAuthentication;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +32,8 @@ public class PostActivity extends AppCompatActivity {
 
         updatePostButton = (Button) findViewById(R.id.updatePostButton);
         postText = (EditText) findViewById(R.id.postText);
+        postReference = FirebaseDatabase.getInstance().getReference("Posts");
+        userAuthentication = FirebaseAuth.getInstance();
 
         updatePostButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,16 +49,25 @@ public class PostActivity extends AppCompatActivity {
         if(TextUtils.isEmpty(post)){
             Toast.makeText(this, "Please input a question here...", Toast.LENGTH_SHORT).show();
         }
-        /*
+
         else{
-            StoreQuestionToFirebaseStorage();
+            StoreQuestionToFirebaseStorage(post);
         }
-        */
+
     }
 
-    /*
-    public void StoreQuestionToFirebaseStorage(){
-        StorageReference filePath = postReference.child("Posts").child();
+
+    public void StoreQuestionToFirebaseStorage(String post){
+        Calendar calFordDate = Calendar.getInstance();
+        SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm");
+        String saveCurrentTime = currentTime.format(calFordDate.getTime());
+
+        //need a getUser function somehow to know which user made the post????
+
+        String user_id = userAuthentication.getCurrentUser().getUid();
+        Post newPost = new Post(user_id, saveCurrentTime, post);
+        postReference.child(postReference.push().getKey()).setValue(newPost);
+        Toast.makeText(this, newPost.getUser() + " successfully added a post!", Toast.LENGTH_LONG).show();
     }
-    */
+
 }

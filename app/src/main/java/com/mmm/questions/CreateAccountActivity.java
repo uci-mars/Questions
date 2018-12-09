@@ -85,17 +85,17 @@ public class CreateAccountActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
+
                         Toast.makeText(CreateAccountActivity.this, "Account created!", Toast.LENGTH_SHORT).show();
 
                         User u = new User(name,email,pass1);
                         databaseReference.child(databaseReference.push().getKey()).setValue(u);
 
-                                userEmail.setText("");
-                        userName.setText("");
-                        userPass.setText("");
-                        userConfirmPass.setText("");
 
-                        sendUserToMain();
+
+                        Intent intent = new Intent(CreateAccountActivity.this,MainActivity.class);
+                        startActivity(intent);
+                        
                     }else{
                         String m = task.getException().getMessage();
                         Toast.makeText(CreateAccountActivity.this, "Error: " + m, Toast.LENGTH_SHORT).show();
@@ -105,8 +105,5 @@ public class CreateAccountActivity extends AppCompatActivity {
         }
     }
 
-    private void sendUserToMain() {
-        Intent intent = new Intent(this,com.mmm.questions.MainActivity.class);
-        startActivity(intent);
-    }
+
 }
