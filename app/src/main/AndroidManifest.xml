@@ -10,21 +10,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         // "Main" Activity
-        <activity android:name=".SignInActivity"
+        <activity
+            android:name=".SignInActivity"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-
         </activity>
-        <activity android:name=".CreateAccountActivity"></activity>
-
-        <activity android:name=".MainActivity"></activity>
-
-
+        <activity android:name=".CreateAccountActivity" />
+        <activity android:name=".MainActivity" />
         <activity
             android:name=".PostActivity"
             android:exported="true">
@@ -32,7 +28,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SearchActivity"></activity>
+        <activity android:name=".SearchActivity" />
+        <activity android:name=".ClickPostActivity"></activity>
     </application>
 
 </manifest>
