@@ -10,6 +10,7 @@ import android.support.design.widget.NavigationView;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
-    private RecyclerView postList;
+    private RecyclerView questionsList;
     private ActionBarDrawerToggle actionBarDrawerToggle;
     private Toolbar mToolbar;
 
@@ -50,6 +51,15 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         navigationView = (NavigationView) findViewById(R.id.navigation_view);
+
+        questionsList = (RecyclerView) findViewById(R.id.questions_list);
+        questionsList.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setReverseLayout(true);
+        linearLayoutManager.setStackFromEnd(true);
+        questionsList.setLayoutManager(linearLayoutManager);
+
+
         View navView = navigationView.inflateHeaderView(R.layout.navigation_header);
 
 
@@ -64,6 +74,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        DisplayAllUsersPosts();
+
+
+    }
+
+    private void DisplayAllUsersPosts()
+    {
 
     }
 
