@@ -1,3 +1,13 @@
+/*
+Questions is made by:
+Melissa Chin
+Marwin Chheang
+Michelle Wang
+
+Github:
+https://github.com/uci-mars/Questions
+ */
+
 package com.mmm.questions;
 
 import android.content.Intent;
@@ -52,23 +62,19 @@ public class SearchActivity extends AppCompatActivity {
 
         searchButton = (Button)findViewById(R.id.searchButton);
         searchText = (EditText)findViewById(R.id.searchText);
-        postArr = new ArrayList<Post>();
+        postArr = new ArrayList<>();
 
         searchText.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {            }
 
             @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {            }
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if(!editable.toString().isEmpty()){
-                    search(editable.toString());
+                if(!editable.toString().trim().isEmpty()){
+                    search(editable.toString().trim());
                 }else{
                     search("");
                 }
@@ -116,17 +122,20 @@ public class SearchActivity extends AppCompatActivity {
 
     private void search(String s)
     {
-        Query query = UsersRef.orderByChild("content")
-                .startAt(s)
-                .endAt(s + "\uf8ff");
+        DatabaseReference query = UsersRef;
+        final String search = s;
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(dataSnapshot.hasChildren()){
                     postArr.clear();
                     for(DataSnapshot s: dataSnapshot.getChildren()){
-                        final Post item = s.getValue(Post.class);
-                        postArr.add(item);
+                        String name = s.child("content").getValue(String.class);
+                        if(name.contains(search)){
+                            final Post item = s.getValue(Post.class);
+                            postArr.add(item);
+                        }
+
                     }
                     MyAdapter ma = new MyAdapter(getApplicationContext(),postArr);
                     questionsList.setAdapter(ma);
@@ -141,32 +150,6 @@ public class SearchActivity extends AppCompatActivity {
         });
     }
 
-//    protected void onStart()
-//    {
-//        super.onStart();
-
-//        FirebaseRecyclerAdapter<Post, SearchActivity.PostViewHolder> adapter =
-//                new FirebaseRecyclerAdapter<Post, SearchActivity.PostViewHolder>(options) {
-//                    @Override
-//                    protected void onBindViewHolder(@NonNull SearchActivity.PostViewHolder holder, int position, @NonNull Post model) {
-//                        holder.userName.setText(model.userID);
-//                        holder.questionPost.setText(model.getContent());
-//                        holder.dateStamp.setText(model.getCurrentDate() + " @ ");
-//                        holder.timeStamp.setText(model.getCurrentTime());
-//                    }
-//
-//                    @NonNull
-//                    @Override
-//                    public SearchActivity.PostViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-//                        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.questions_layout, parent, false);
-//                        SearchActivity.PostViewHolder viewHolder = new SearchActivity.PostViewHolder(view);
-//                        return viewHolder;
-//                    }
-//                };
-//        questionsList.setAdapter(adapter);
-//
-//        adapter.startListening();
-//    }
 
     public static class PostViewHolder extends RecyclerView.ViewHolder{
 

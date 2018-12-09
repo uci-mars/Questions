@@ -178,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId())
         {
             case R.id.nav_home:
-                Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, com.mmm.questions.MainActivity.class));
                 break;
 
             case R.id.nav_search:
@@ -222,7 +222,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         String user_id = mAuth.getCurrentUser().getDisplayName();
-        Post newPost = new Post(user_id, saveCurrentTime, saveCurrentDate, post);
+        Post newPost = new Post(user_id, mAuth.getCurrentUser().getUid(), saveCurrentTime, saveCurrentDate, post);
         PostRef.child(PostRef.push().getKey()).setValue(newPost);
         Toast.makeText(this, newPost.getUser() + " successfully added a post!", Toast.LENGTH_LONG).show();
     }
