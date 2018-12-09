@@ -6,8 +6,8 @@
         android:title="Messages"/>
 
     <item
-        android:id="@+id/nav_settings"
-        android:title="Settings"/>
+        android:id="@+id/nav_search"
+        android:title="Search"/>
 
     <item
         android:id="@+id/nav_logout"
