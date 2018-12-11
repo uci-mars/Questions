@@ -1,0 +1,37 @@
+Questions is made by:
+Melissa Chin
+Marawin Chheang
+Michelle Wang
+
+MainActivity.java -- Written by Melissa Chin and Marawin Chheang
+ClickPostActivity.java - Pops up a window to allow the user to delete the post. Written by Melissa Chin but debugged by Marawin Chheang.
+CreateAccountActivity.java -- Allows user to create an account with given email/password/name; note name cannot be changed in this implementation of the app. Written by Michelle Wang
+Post.java -- A class for posts. Stores the user who wrote the post, the time and date, and Uid. Written by Melissa Chin.
+PostActivity.java -- The activity that allows user to post. Written by Melissa Chin
+SearchActivity.java -- Allows the user to search questions that has been asked by typing into the search box. Written by Michelle Wang
+SignInActivity.java -- The activity the app starts on, which allows user to sign in (using firebase email authentication), or if the user needs an account sends to CreateAccountActivity. Written by Michelle Wang and Marawin Chheang
+User.java -- Creates user objects which is then stored onto the database. Written by Michelle Wang
+
+
+Marawin Chheang
+-- Implemented the RecyclerView that fetch data from the Database
+-- Implemented navigation menu
+-- Implemented TextField and Button for users to post questions
+-- Developed the front end of the app
+
+Melissa Chin
+-- Implemented a function to store questions on the database
+-- Implemented the delete function
+-- Implemented the posting functionality
+-- Implemented Post object
+
+Michelle Wang
+-- Implemented User object
+-- Implemented Log in/Sign out/Firebase authentication
+-- Implemented Create account
+-- Implemented Search
+
+
+Github:
+https://github.com/uci-mars/Questions
+
