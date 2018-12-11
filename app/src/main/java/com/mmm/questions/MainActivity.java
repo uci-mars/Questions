@@ -2,6 +2,28 @@ package com.mmm.questions;
 
 // The "wall"
 
+/*
+Questions is made by:
+Melissa Chin
+Marawin Chheang
+Michelle Wang
+
+MainActivity.java -- Written mostly by Melissa Chin and Marawin Chheang
+
+Marawin Chheang
+-- Implemented the RecyclerView that fetch data from the Database
+-- Implemented navigation menu and handled all of the app front end
+-- Implemented TextField and Button for users to post questions
+
+Melissa Chin
+-- Implemented a function to store questions on the database
+-- Implemented the delete function
+
+
+Github:
+https://github.com/uci-mars/Questions
+ */
+
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.DrawerLayout;
@@ -65,9 +87,6 @@ public class MainActivity extends AppCompatActivity {
 
         updatePostButton = (Button) findViewById(R.id.raisehand_button);
 
-
-
-
         mToolbar = (Toolbar) findViewById(R.id.main_page_toolbar);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle("ICS45J");
@@ -80,12 +99,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
-
-
         navigationView = (NavigationView) findViewById(R.id.navigation_view);
-
-
-
 
         questionsList = (RecyclerView) findViewById(R.id.questions_list);
         questionsList.setHasFixedSize(true);
