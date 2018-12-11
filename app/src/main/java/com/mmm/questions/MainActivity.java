@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.support.v7.widget.Toolbar;
@@ -41,9 +42,11 @@ public class MainActivity extends AppCompatActivity {
     private ActionBarDrawerToggle actionBarDrawerToggle;
     private Toolbar mToolbar;
     private DatabaseReference PostRef;
+    private TextView user;
     //private Button askButton;
     //for ser info
     private FirebaseAuth mAuth;
+
 
     private Button updatePostButton;
     private EditText postText;
@@ -56,10 +59,14 @@ public class MainActivity extends AppCompatActivity {
 
         postText = (EditText) findViewById(R.id.question_text);
 
+
         PostRef = FirebaseDatabase.getInstance().getReference().child("Posts");
         mAuth = FirebaseAuth.getInstance();
 
         updatePostButton = (Button) findViewById(R.id.raisehand_button);
+
+
+
 
         mToolbar = (Toolbar) findViewById(R.id.main_page_toolbar);
         setSupportActionBar(mToolbar);
@@ -72,7 +79,13 @@ public class MainActivity extends AppCompatActivity {
         actionBarDrawerToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+
+
+
         navigationView = (NavigationView) findViewById(R.id.navigation_view);
+
+
+
 
         questionsList = (RecyclerView) findViewById(R.id.questions_list);
         questionsList.setHasFixedSize(true);
@@ -80,7 +93,6 @@ public class MainActivity extends AppCompatActivity {
         linearLayoutManager.setReverseLayout(true);
         linearLayoutManager.setStackFromEnd(true);
         questionsList.setLayoutManager(linearLayoutManager);
-
 
         View navView = navigationView.inflateHeaderView(R.layout.navigation_header);
 
@@ -215,7 +227,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void StoreQuestionToFirebaseStorage(String post){
         Calendar calFordDate = Calendar.getInstance();
-        SimpleDateFormat currentDate = new SimpleDateFormat("dd-MMMM-yyyy");
+        SimpleDateFormat currentDate = new SimpleDateFormat("dd-MM-yyyy");
         String saveCurrentDate = currentDate.format(calFordDate.getTime());
 
         Calendar calFordTime = Calendar.getInstance();

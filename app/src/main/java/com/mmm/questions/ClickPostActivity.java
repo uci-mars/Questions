@@ -45,8 +45,14 @@ public class ClickPostActivity extends AppCompatActivity {
         ClickPostRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String content = dataSnapshot.child("content").getValue().toString();
-                postView.setText(content);
+                try {
+                    String content = dataSnapshot.child("content").getValue().toString();
+                    postView.setText(content);
+                }
+                catch (NullPointerException n){
+
+                }
+
             }
 
             @Override
